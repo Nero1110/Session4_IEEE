@@ -2,182 +2,73 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp( MyApp());
+
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int x=0;
+
+  void decrement(){
+  if(x!=0) {
+    setState(() {
+      x--;
+    });
+  }
+  }
+  void reset(){
+if(x!=0){
+ setState(() {
+   x=0;
+ });
+}
+  }
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-  body: Padding(
-    padding: const EdgeInsets.only(top: 30),
-    child: Column(
-      children: [
+   return MaterialApp(home: Scaffold(backgroundColor:Colors.black ,body: Column(children: [
+     Padding(
+       padding: const EdgeInsets.only(left: 88,top: 180),
+       child: Text("My Counter",style: TextStyle(fontSize: 50,color: Colors.white),),
 
-        Row(
-            
-            children: [
-Container(
-          color:Colors.purple ,
+     )
+     ,Padding(
+       padding: const EdgeInsets.only(top: 60,left: 52),
+       child: Text(x.toString(),style: TextStyle(color: Colors.white,fontSize: 50),),
+     )
 
-          child: SizedBox(child:Padding(
-            padding: const EdgeInsets.only(left: 70),
-            child: Text("الأخبار",style: TextStyle(color: Colors.white,fontSize: 30 ,fontWeight: FontWeight.w200),),
-          ),width: 200,height: 50, ))
+,Padding(
+  padding: const EdgeInsets.only(top: 180,left: 70),
+  child:   ElevatedButton(onPressed:() {
 
- ,   Padding(
-         padding: const EdgeInsets.only(left: 11),
-         child: Container(
-                color:Colors.purple ,
-
-                child: SizedBox(child:Padding(
-                  padding: const EdgeInsets.only(left: 70),
-                  child: Text("المجلات",style: TextStyle(color: Colors.white,fontSize: 30 ,fontWeight: FontWeight.w200),),
-                ),width: 200,height: 50, )),
- )
-              ,]
-          
-            ),
-Padding(
-  padding: const EdgeInsets.only(bottom: 0),
-  child:   Row(children: [
-
-    Stack(children: [
-
-      Image(image: AssetImage("assets/images/السياسة.jpg"),height: 240,width: 220,)
-
-      ,Padding(
-
-        padding: const EdgeInsets.only(top: 143,left: 65),
-
-        child: Container(
-
-            color:Colors.purple [300],
-
-            child: SizedBox(child:Padding(
-
-              padding: const EdgeInsets.only(left: 30),
-
-              child: Text("مجلة السياسة",style: TextStyle(color: Colors.white,fontSize: 20 ,fontWeight: FontWeight.w200),),
-
-            ),width: 150,height: 30, )),
-
-      ),
-
-    ],)
-
-   , Stack(children: [
-
-      Image(image: AssetImage("assets/images/التكنولوجيا.jpg"),height: 190,width: 190,)
-
-      ,Padding(
-
-        padding: const EdgeInsets.only(top: 130,left: 40 ),
-
-        child: Container(
-
-            color:Colors.purple [300],
-
-            child: SizedBox(child:Padding(
-
-              padding: const EdgeInsets.only(left: 30,),
-
-              child: Text("مجلة التكنولوجيا",style: TextStyle(color: Colors.white,fontSize: 15 ,fontWeight: FontWeight.w200),),
-
-            ),width: 130,height: 20, )),
-
-      ),
-
-    ],)
+      setState(() {
+        x++;
+      });
 
 
-
-  ],),
+  }, child: Icon(Icons.arrow_upward)),
 )
-        ,Row(
-          children: [
-          Stack(children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 0),
-              child: Image(image: AssetImage("assets/images/الرياضة.jpg"),height: 200,width: 200,alignment: Alignment(-2,-2),),
-            )
-            ,Padding(
-              padding: const EdgeInsets.only(top: 70,left: 50),
-              child: Container(
-                  color:Colors.purple [300],
-                  child: SizedBox(child:Padding(
-                    padding: const EdgeInsets.only(left: 30),
-                    child: Text("مجلة الرياضة",style: TextStyle(color: Colors.white,fontSize: 20 ,fontWeight: FontWeight.w200),),
-                  ),width: 150,height: 30, )),
-            ),
-          ],)
-          , Padding(
-            padding: const EdgeInsets.only(bottom: 0,left: 20),
-            child: Stack(children: [
-              Image(image: AssetImage("assets/images/السياحة.jpg"),height: 160,width: 190,alignment: Alignment(-2,-2),)
-              ,Padding(
-                padding: const EdgeInsets.only(top: 70,left: 40 ),
-                child: Container(
-                    color:Colors.purple [300],
-                    child: SizedBox(child:Padding(
-                      padding: const EdgeInsets.only(left: 37),
-                      child: Text("مجلة السياحة",style: TextStyle(color: Colors.white,fontSize: 15 ,fontWeight: FontWeight.w200),),
-                    ),width: 130,height: 20, )),
-              ),
-            ],),
-          )
+     ,Padding(
+       padding: const EdgeInsets.only(left: 70,top: 5),
+       child: ElevatedButton(onPressed: () {
+         reset();
 
-        ],)
+       }, child: Text("Reset")),
+     )
+,Padding(
+       padding: const EdgeInsets.only(top: 10,left: 70),
+       child:   ElevatedButton(onPressed:() {
+         decrement();
 
-       , Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Stack(children: [
-              
-              Image(image:AssetImage("assets/images/الصحة.png"),height: 120,width: 200,)
-             , Padding(
-               padding: const EdgeInsets.only(left: 50,top: 90),
-               child: Container(
-                  color:Colors.purple[300],
-        child: SizedBox(child:Padding(
-          padding: const EdgeInsets.only(left: 30),
-          child: Text("مجلة الصحة",style: TextStyle(color: Colors.white,fontSize: 15 ,fontWeight: FontWeight.w200),),
-        ),width: 130,height: 25, )),
-             ),
+       }, child: Icon(Icons.arrow_downward)),
+     )
+   ],)),);
 
-
-            ],)
-           ,Stack(
-
-              children: [
-             Image(image: AssetImage("assets/images/حواء.jpg"),height: 120,width: 210,)
-             ,Padding(
-               padding: const EdgeInsets.only(left:65,top: 95),
-               child: Container(color: Colors.purple[300],
-                child: SizedBox(child:Padding(
-    padding: const EdgeInsets.only(left: 30),
-    child: Text("مجلة حواء",style: TextStyle(color: Colors.white,fontSize: 15 ,fontWeight: FontWeight.w200),),
-    ),width: 130,height: 25, )),
-             ),
-
-
-
-
-            ],)
-          
-          
-          ],)
-
-
-
-      ],
-    ),
-  ),
-    )
-    );
   }
 }
+
